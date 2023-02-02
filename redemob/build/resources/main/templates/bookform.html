@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="meuArquivo.js"></script>
+</head>
+
+<body>
+<div th:if="${mensagem}" th:text="${mensagem}"></div>
+
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <!-- Conteúdo a ser centralizado aqui -->
+    <div>
+        <form action="/book/form/save" method="POST">
+            <h1>Cadastro para cartão de transporte RedeMob</h1>
+            <div th:if="${book}">
+                <input type="text" readonly id="id" name="id" th:value="${book?.id}" />
+            </div>
+            <br>
+            <br>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome"
+                   th:value="${book?.nome}" required />
+            <br>
+            <input type="text" class="form-control" id="nome_mae" name="nome_mae"
+                   placeholder="Digite o nome de sua mãe" th:value="${book?.nome_mae}" required />
+            <br>
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF"
+                   th:value="${book?.cpf}" required>
+            <br>
+            <label>DATA DE NASCIMENTO</label>
+            <input type="date" id="dt_nasc" name="dt_nasc" th:value="${book?.dt_nasc}" required />
+            <br>
+            <br>
+            <label>SELFIE: </label>
+            <input type="file" id="foto_rosto" name="foto_rosto" th:value="${book?.foto_rosto}" accept="image/*"
+                   required />
+            <br>
+            <br>
+            <label>DOCUMENTO COM FOTO: </label>
+            <input type="file" id="foto_documento" name="foto_documento" th:value="${book?.foto_documento}"
+                   accept="image/*" required />
+            <br>
+            <br>
+            <label>COMPROVANTE DE RESIDÊNCIA: </label>
+            <input type="file" id="foto_comprovante" name="foto_comprovante" th:value="${book?.foto_comprovante}"
+                   accept="image/*" required />
+            <br>
+            <br>
+            <label>USUÁRIO</label>
+            <input type="text" id="username" name="username" th:value="${book?.username}" required />
+            <br>
+            <br>
+            <label>SENHA</label>
+            <input type="password" id="password" name="password" th:value="${book?.password}"
+                   oninput="checkPasswordLength()" required />
+            <p id="errorMessage" style="display: none; color: red;">A senha deve ter entre 8 e 20 caracteres.</p>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <a href="/loginUser"><button type="button" class="btn btn-primary">Login Usuário </button> </a>
+            <a href="/loginAdm"><button type="button" class="btn btn-danger">Login ADM </button> </a>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

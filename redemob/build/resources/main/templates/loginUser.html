@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script>
+    function validateForm() {
+      var login = document.forms["myForm"]["login"].value;
+      var password = document.forms["myForm"]["password"].value;
+      if (login == "admin" && password == "123") {
+        alert("Login efetuado com sucesso");
+      } else {
+        alert("Usuário ou senha inválidos");
+      }
+    }
+  </script>
+</head>
+<body>
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <div>
+    <h1>Login Usuário</h1>
+    <form action="/book/form/cliente" method="POST">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuário"><br><br>
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="senha"><br><br>
+      <input type="submit" class="btn btn-success" value="Login" onclick="validateForm()">
+      <a href="/rocket"><button type="button" class="btn btn-danger">Voltar </button> </a>
+    </form>
+    <div th:if="${mensagem}" th:text="${mensagem}"></div>
+  </div>
+</div>
+</body>
+</html>
